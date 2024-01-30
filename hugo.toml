@@ -1,3 +1,7 @@
 baseURL = 'https://lurdev.com/'
 languageCode = 'en-us'
 title = 'Lurdev'
+
+[services]
+  [services.googleAnalytics]
+    ID = 'G-DRPCY479L2'
