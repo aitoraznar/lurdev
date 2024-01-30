@@ -1,0 +1,5 @@
+defaultContentLanguage = "es"
+
+[services]
+  [services.googleAnalytics]
+    ID = 'G-XXXXX'

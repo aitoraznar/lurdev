@@ -1,0 +1,167 @@
+:root {
+  --main-color: #0f4c81;
+  --secondary-color: #f0c244;
+}
+
+body,
+html {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background-color: var(--main-color);
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.logo-brand {
+  position: absolute;
+  width: 200px;
+}
+.logo-brand .background-image {
+  /*filter: blur(8px);
+  -webkit-filter: blur(8px);*/
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.content {
+  /*background-color: rgba(0, 0, 0, 0.4); /* Black with a bit of transparency */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  z-index: 1;
+}
+
+.statement {
+  max-width: 40vw;
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.main-button {
+  background-color: var(--secondary-color);
+  border-radius: 4px;
+  color: black;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 1;
+  font-size: 1em;
+}
+
+.main-button:hover {
+  opacity: 0.9;
+}
+
+footer {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+footer span.brand:hover {
+  font-weight: 900;
+  color: var(--secondary-color);
+  cursor: zoom-in;
+}
+footer a,
+footer a:link {
+  opacity: 0.8;
+  color: var(--secondary-color);
+}
+footer a:visited,
+footer a:focus,
+footer a:hover,
+footer a:active {
+  opacity: 1;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 4px;
+  width: 60vw;
+  min-width: 450px;
+  max-width: 800px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 1440px) {
+  .statement {
+    max-width: 50vw;
+  }
+}
+
+@media only screen and (max-width: 120px) {
+  .statement {
+    max-width: 60vw;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .statement {
+    max-width: 70vw;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .statement {
+    max-width: 70vw;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .statement {
+    max-width: 90vw;
+  }
+}

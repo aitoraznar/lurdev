@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lurdev</title>
+    <link rel="stylesheet" href="/css/index.css" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  </head>
+  <body>
+    {{ partial "header.html" . }}
+
+    <div class="content">
+      <div class="statement">
+        <h2>
+          In <strong>Lurdev</strong> we do not spend time on a fancy website.
+        </h2>
+        <h2>We are busy creating your next awesome project.</h2>
+        <button id="contactBtn" class="main-button">Contact us</button>
+      </div>
+    </div>
+
+    {{ partial "footer.html" . }}
+
+    <div id="contactModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form
+          action="https://formspree.io/f/aitor@aitoraznar.com"
+          method="POST"
+          id="contactForm"
+        >
+          <label for="name">Name:</label><br />
+          <input type="text" id="name" name="name" required /><br />
+          <label for="email">Email:</label><br />
+          <input type="email" id="email" name="email" required /><br />
+          <label for="message">Message:</label><br />
+          <textarea id="message" name="message" required></textarea><br />
+          <input type="submit" value="Submit" class="main-button" />
+        </form>
+      </div>
+    </div>
+    <script src="/js/index.js"></script>
+  </body>
+</html>
