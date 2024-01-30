@@ -1,5 +1,12 @@
 (function () {
+  function trackAnalyticsEvent(type = "click", args = {}) {
+    if (typeof window.gtag === "function") {
+      window.gtag("event", type, args);
+    }
+  }
+
   document.getElementById("contactBtn").onclick = function () {
+    trackAnalyticsEvent("open_contact", {});
     document.getElementById("contactModal").style.display = "block";
   };
 
@@ -14,9 +21,13 @@
     }
   };
 
-  document.getElementById("contactForm").onsubmit = function (event) {
+  const form = document.getElementById("contactForm");
+  form.onsubmit = function (event) {
     event.preventDefault();
     // Add form submission logic here
+    trackAnalyticsEvent("form_submitted", {
+      email: document.getElementById("email").value,
+    });
     alert("Form submitted!");
     document.getElementById("contactModal").style.display = "none";
   };
