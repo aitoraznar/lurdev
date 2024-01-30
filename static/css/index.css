@@ -41,7 +41,7 @@ html {
 }
 
 .symbol-brand {
-  width: 30%;
+  width: 30vw;
   position: absolute;
   z-index: -1;
   opacity: 0.4;
@@ -147,11 +147,17 @@ textarea {
   .statement {
     max-width: 50vw;
   }
+  .symbol-brand {
+    width: 40vw;
+  }
 }
 
 @media only screen and (max-width: 120px) {
   .statement {
     max-width: 60vw;
+  }
+  .symbol-brand {
+    width: 50vw;
   }
 }
 
@@ -159,11 +165,14 @@ textarea {
   .statement {
     max-width: 70vw;
   }
+  .symbol-brand {
+    width: 60vw;
+  }
 }
 
 @media only screen and (max-width: 800px) {
   .statement {
-    max-width: 70vw;
+    max-width: 75vw;
   }
 }
 
