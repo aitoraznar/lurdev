@@ -23,7 +23,6 @@
 
   const form = document.getElementById("contactForm");
   form.onsubmit = function (event) {
-    event.preventDefault();
     // Add form submission logic here
     trackAnalyticsEvent("form_submitted", {
       email: document.getElementById("email").value,
