@@ -27,7 +27,6 @@
     trackAnalyticsEvent("form_submitted", {
       email: document.getElementById("email").value,
     });
-    alert("Form submitted!");
     document.getElementById("contactModal").style.display = "none";
   };
 })();
