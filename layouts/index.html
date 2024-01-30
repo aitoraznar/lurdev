@@ -1,3 +1,5 @@
+{{ $logo := resources.Get "images/logo_symbol.svg" }}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,6 +19,17 @@
     {{ partial "header.html" . }}
 
     <div class="content">
+      <div class="symbol-brand">
+        <picture>
+          <source srcset="{{ $logo.Permalink }}" />
+          <img
+            src="/assets/{{ $logo.Permalink }}"
+            alt="logo"
+            class="background-image"
+          />
+        </picture>
+      </div>
+
       <div class="statement">
         <h2>
           In <strong>Lurdev</strong> we do not spend time on a fancy website.

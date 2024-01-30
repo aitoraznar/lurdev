@@ -40,6 +40,13 @@ html {
   z-index: 1;
 }
 
+.symbol-brand {
+  width: 30%;
+  position: absolute;
+  z-index: -1;
+  opacity: 0.4;
+}
+
 .statement {
   max-width: 40vw;
   color: white;
