@@ -13,6 +13,14 @@ html {
   font-family: Helvetica, Arial, sans-serif;
 }
 
+#dragonScalesCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
 .logo-brand {
   position: absolute;
   width: 200px;
