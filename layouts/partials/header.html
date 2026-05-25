@@ -1,13 +1,20 @@
 {{ $logo := resources.Get "images/logo_white_trans.svg" }}
 <header>
   <div class="logo-brand">
-    <picture>
-      <source srcset="{{ $logo.Permalink }}" />
-      <img
-        src="/assets/{{ $logo.Permalink }}"
-        alt="logo"
-        class="background-image"
-      />
-    </picture>
+    <a href="/">
+      <picture>
+        <source srcset="{{ $logo.Permalink }}" />
+        <img
+          src="/assets/{{ $logo.Permalink }}"
+          alt="logo"
+          class="background-image"
+        />
+      </picture>
+    </a>
   </div>
+  {{ if .IsHome }}
+  <nav class="site-nav">
+    <a href="/domotica">Domótica</a>
+  </nav>
+  {{ end }}
 </header>
