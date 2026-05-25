@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KNX vs Home Assistant + Zigbee · Lurdev</title>
+    <meta name="description" content="Comparativa técnica y económica entre el estándar profesional KNX y el ecosistema open-source Home Assistant con dispositivos Zigbee." />
+    <meta name="keywords" content="domótica, Home Assistant, Zigbee, KNX, comparativa, domótica inteligente, smart home" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <style>html { height: auto; overflow-y: auto; }</style>
+    {{ partial "head-end.html" . }}
+  </head>
+  <body class="domotica-page">
+
+    <section class="domotica-hero domotica-hero--short">
+      <canvas id="dragonScalesCanvas"></canvas>
+      {{ partial "header.html" . }}
+      <div class="domotica-hero-content">
+        <p class="domotica-hero-sub">Análisis técnico · Domótica residencial · 2025</p>
+        <h1 class="domotica-hero-title">KNX vs<br>Home Assistant + Zigbee</h1>
+        <p class="domotica-hero-desc">Comparativa técnica y económica entre el estándar profesional KNX y el ecosistema open-source con dispositivos Zigbee.</p>
+        <a href="/domotica" class="cmp-back-link">← Volver a Domótica</a>
+      </div>
+    </section>
+
+    <div class="domotica-body">
+      <div class="domotica-section domotica-comparison-section">
+
+        <div class="cmp-headers">
+          <div class="cmp-col-label"></div>
+          <div class="cmp-badge cmp-badge-knx">
+            <span class="cmp-badge-name">KNX</span>
+            <span class="cmp-badge-tag">Estándar europeo · Bus de instalación · ISO/IEC 14543</span>
+          </div>
+          <div class="cmp-badge cmp-badge-ha">
+            <span class="cmp-badge-name">Home Assistant + Zigbee</span>
+            <span class="cmp-badge-tag">Open-source · Protocolo mesh inalámbrico · Local-first</span>
+          </div>
+        </div>
+
+        <table class="cmp-table">
+          <tbody>
+
+            <tr class="cmp-divider"><td colspan="3"><span>Arquitectura &amp; Tecnología</span></td></tr>
+
+            <tr>
+              <td class="cmp-cat">
+                <div class="cmp-cat-name">Topología de red</div>
+                <div class="cmp-cat-sub">Cómo se comunican los dispositivos</div>
+              </td>
+              <td class="cmp-knx">
+                <div class="cmp-cell-header">Bus KNX (par trenzado TP)</div>
+                <div class="cmp-cell-text">Cada dispositivo conectado físicamente al bus. Topología libre. Tensión 29V DC integrada en el cable.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Muy fiable</span><span class="cmp-pill cmp-good">Sin interferencias</span><span class="cmp-pill cmp-warn">Cableado obligatorio</span></div>
+              </td>
+              <td class="cmp-ha">
+                <div class="cmp-cell-header">Red mesh inalámbrica 2.4 GHz</div>
+                <div class="cmp-cell-text">IEEE 802.15.4. Los dispositivos actúan como routers entre sí. Coordinador Zigbee conectado al servidor HA.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Sin cableado</span><span class="cmp-pill cmp-good">Autoconfiguración mesh</span><span class="cmp-pill cmp-warn">Interferencias 2.4 GHz</span></div>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="cmp-cat">
+                <div class="cmp-cat-name">Inteligencia</div>
+                <div class="cmp-cat-sub">Dónde reside la lógica</div>
+              </td>
+              <td class="cmp-knx">
+                <div class="cmp-cell-header">Distribuida: sin servidor central</div>
+                <div class="cmp-cell-text">Cada actuador y sensor tiene su propia lógica. Funciona aunque router e internet estén caídos.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">100% descentralizado</span><span class="cmp-pill cmp-good">Sin punto de fallo único</span></div>
+              </td>
+              <td class="cmp-ha">
+                <div class="cmp-cell-header">Centralizada en servidor local</div>
+                <div class="cmp-cell-text">Raspberry Pi 4/5, mini PC o NAS. Si el servidor cae, las automatizaciones se detienen; los dispositivos Zigbee básicos pueden seguir operando.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-warn">Centralizado</span><span class="cmp-pill cmp-good">Sin cloud</span></div>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="cmp-cat">
+                <div class="cmp-cat-name">Instalación eléctrica</div>
+                <div class="cmp-cat-sub">Requisitos de obra</div>
+              </td>
+              <td class="cmp-knx">
+                <div class="cmp-cell-text">Requiere canaleta o tubo para el cable de bus aparte del cableado normal. Solo viable en obra nueva o reforma integral.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-bad">Solo obra nueva / reforma</span></div>
+              </td>
+              <td class="cmp-ha">
+                <div class="cmp-cell-text">Sin obra ni cableado adicional. Dispositivos Zigbee se instalan en minutos sobre la instalación existente.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Sin obra</span><span class="cmp-pill cmp-good">Retroinstalable</span></div>
+              </td>
+            </tr>
+
+            <tr class="cmp-divider"><td colspan="3"><span>Costes</span></td></tr>
+
+            <tr>
+              <td class="cmp-cat">
+                <div class="cmp-cat-name">Coste de hardware</div>
+                <div class="cmp-cat-sub">Por punto de control</div>
+              </td>
+              <td class="cmp-knx">
+                <div class="cmp-cell-text">Actuador de luz: 80–200 €. Sensor de temperatura: 60–150 €. Pantalla táctil: 400–1.500 €. Precio por punto: <strong>80–250 €</strong>.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-bad">Muy elevado</span></div>
+              </td>
+              <td class="cmp-ha">
+                <div class="cmp-cell-text">Enchufe inteligente: 8–20 €. Bombilla: 5–15 €. Sensor: 8–25 €. Precio por punto: <strong>10–50 €</strong>.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Muy económico</span></div>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="cmp-cat">
+                <div class="cmp-cat-name">Coste total (150 m²)</div>
+                <div class="cmp-cat-sub">Material + instalación</div>
+              </td>
+              <td class="cmp-knx">
+                <div class="cmp-cell-text">Instalador certificado KNX obligatorio. Software ETS: 1.000–3.000 €. Proyecto completo: <strong>15.000–40.000 €</strong>.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-bad">Instalador certificado</span><span class="cmp-pill cmp-bad">Software ETS de pago</span></div>
+              </td>
+              <td class="cmp-ha">
+                <div class="cmp-cell-text">Instalable por usuario con conocimientos IT. Proyecto completo: <strong>500–2.500 €</strong> en material.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">DIY posible</span><span class="cmp-pill cmp-good">Software gratuito</span></div>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="cmp-cat">
+                <div class="cmp-cat-name">Costes recurrentes</div>
+                <div class="cmp-cat-sub">Mantenimiento y licencias</div>
+              </td>
+              <td class="cmp-knx">
+                <div class="cmp-cell-text">Mantenimiento profesional ante cambios de programación. Sin cuotas de suscripción, pero intervenciones costosas.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-warn">Mantenimiento caro</span><span class="cmp-pill cmp-good">Sin suscripciones cloud</span></div>
+              </td>
+              <td class="cmp-ha">
+                <div class="cmp-cell-text">Home Assistant gratuito y open-source. HA Cloud opcional ~7 €/mes para acceso remoto. Servidor con consumo 5–15 W continuo.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Software gratuito</span><span class="cmp-pill cmp-good">Cloud opcional ~7 €/mes</span></div>
+              </td>
+            </tr>
+
+            <tr class="cmp-divider"><td colspan="3"><span>Funcionalidades</span></td></tr>
+
+            <tr>
+              <td class="cmp-cat">
+                <div class="cmp-cat-name">Iluminación</div>
+              </td>
+              <td class="cmp-knx">
+                <div class="cmp-cell-text">Regulación de alta calidad. Escenas complejas. Integración con interruptores de diseño (Jung, Gira, Berker). Control DALI nativo. Sin latencia apreciable.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Profesional</span><span class="cmp-pill cmp-good">DALI</span></div>
+              </td>
+              <td class="cmp-ha">
+                <div class="cmp-cell-text">Dimming con bombillas Zigbee (Philips Hue, IKEA, Sonoff). Escenas y grupos. Latencia baja (100–300 ms). Interruptores Zigbee retroinstalables.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Muy completo</span><span class="cmp-pill cmp-warn">Latencia baja pero perceptible</span></div>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="cmp-cat">
+                <div class="cmp-cat-name">Climatización</div>
+              </td>
+              <td class="cmp-knx">
+                <div class="cmp-cell-text">Integración nativa con calderas, VRV/VRF y fan-coils. Control de zona por zona. Curvas de calefacción complejas.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Control preciso por zona</span></div>
+              </td>
+              <td class="cmp-ha">
+                <div class="cmp-cell-text">Termostatos Zigbee (SONOFF TRVZB, Aqara E1). Válvulas TRV por radiador. Integración con Daikin, Mitsubishi y más vía integraciones HA.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Amplio ecosistema</span></div>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="cmp-cat">
+                <div class="cmp-cat-name">Persianas y motorización</div>
+              </td>
+              <td class="cmp-knx">
+                <div class="cmp-cell-text">Control de posición preciso (%). Orientación de lamas. Protección automática ante viento/lluvia. Integración con sensores de fachada.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Control preciso (%)</span></div>
+              </td>
+              <td class="cmp-ha">
+                <div class="cmp-cell-text">Somfy, Nice, VELUX, Zemismart con Zigbee o vía bridge. Módulos Shelly para motores existentes. Automatización solar/viento configurable.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Compatible muchas marcas</span></div>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="cmp-cat">
+                <div class="cmp-cat-name">Seguridad y acceso</div>
+              </td>
+              <td class="cmp-knx">
+                <div class="cmp-cell-text">Integración con sistemas de alarma (Siedle, ABB), videoporteros IP y cerraduras electrónicas. Visualización en pantallas KNX.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Integración profesional</span><span class="cmp-pill cmp-warn">Hardware caro</span></div>
+              </td>
+              <td class="cmp-ha">
+                <div class="cmp-cell-text">Sensores apertura/movimiento Zigbee (Aqara, Sonoff). Videoporteros Reolink, Hikvision. Cerraduras Nuki, Yale. Alarmas DSC, Paradox, Bosch.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Ecosistema muy amplio</span><span class="cmp-pill cmp-good">Cerraduras asequibles</span></div>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="cmp-cat">
+                <div class="cmp-cat-name">Monitorización energética</div>
+              </td>
+              <td class="cmp-knx">
+                <div class="cmp-cell-text">Medidores KNX para cuadros. Integración con contadores Modbus. Más orientado a edificios que a hogares.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Muy preciso</span><span class="cmp-pill cmp-warn">Equipamiento caro</span></div>
+              </td>
+              <td class="cmp-ha">
+                <div class="cmp-cell-text">Enchufes Zigbee con medición (SONOFF S31). Shelly EM para cuadro. Integración solar con Fronius, SolarEdge, Huawei. Dashboard de energía nativo.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Dashboard nativo</span><span class="cmp-pill cmp-good">Integración solar</span></div>
+              </td>
+            </tr>
+
+            <tr class="cmp-divider"><td colspan="3"><span>Fiabilidad, Privacidad y Mantenimiento</span></td></tr>
+
+            <tr>
+              <td class="cmp-cat">
+                <div class="cmp-cat-name">Fiabilidad y vida útil</div>
+              </td>
+              <td class="cmp-knx">
+                <div class="cmp-cell-text">Estándar creado en 1990. +500.000 proyectos. Garantía de compatibilidad multi-fabricante a 30+ años.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">35 años de estándar</span><span class="cmp-pill cmp-good">Vida útil 30+ años</span></div>
+              </td>
+              <td class="cmp-ha">
+                <div class="cmp-cell-text">Home Assistant desde 2013, actualizaciones mensuales activas. Dispositivos Zigbee de bajo coste: vida útil variable (3–10 años).</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Proyecto activo y maduro</span><span class="cmp-pill cmp-warn">Dispositivos variables en calidad</span></div>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="cmp-cat">
+                <div class="cmp-cat-name">Privacidad</div>
+              </td>
+              <td class="cmp-knx">
+                <div class="cmp-cell-text">Totalmente local. Ningún dato sale a internet salvo configuración explícita. Sin apps con telemetría.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">100% local</span><span class="cmp-pill cmp-good">Sin telemetría</span></div>
+              </td>
+              <td class="cmp-ha">
+                <div class="cmp-cell-text">Local por diseño. Zigbee solo comunica con el coordinador local. Nabu Casa para acceso remoto es opcional.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Local por defecto</span><span class="cmp-pill cmp-good">Sin cloud obligatorio</span></div>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="cmp-cat">
+                <div class="cmp-cat-name">Interfaz y control remoto</div>
+              </td>
+              <td class="cmp-knx">
+                <div class="cmp-cell-text">Pantallas táctiles propietarias (Gira, Jung, MDT). Apps de fabricante de pago. No existe app universal gratuita.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Pantallas de diseño</span><span class="cmp-pill cmp-bad">Apps caras o complejas</span></div>
+              </td>
+              <td class="cmp-ha">
+                <div class="cmp-cell-text">App móvil oficial gratuita (iOS/Android) con dashboards personalizables. Integración con Alexa, Google Home, Apple HomeKit y Matter.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">App gratuita excelente</span><span class="cmp-pill cmp-good">HomeKit / Matter / Alexa</span></div>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="cmp-cat">
+                <div class="cmp-cat-name">Automatizaciones e IA</div>
+              </td>
+              <td class="cmp-knx">
+                <div class="cmp-cell-text">Lógica en ETS con bloques de función. Potente pero estática: cambios requieren reprogramar con ETS y técnico certificado.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Lógica fiable</span><span class="cmp-pill cmp-bad">Difícil de modificar</span><span class="cmp-pill cmp-bad">Sin IA nativa</span></div>
+              </td>
+              <td class="cmp-ha">
+                <div class="cmp-cell-text">Editor visual accesible. Scripts YAML avanzados. Node-RED para flujos complejos. Integración con LLMs (ChatGPT, Claude, Ollama local) para control conversacional.</div>
+                <div class="cmp-pills"><span class="cmp-pill cmp-good">Editor visual</span><span class="cmp-pill cmp-good">Node-RED</span><span class="cmp-pill cmp-good">IA / LLM</span></div>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        <!-- VERDICT -->
+        <div class="cmp-verdict">
+          <div class="cmp-verdict-card cmp-verdict-knx">
+            <div class="cmp-verdict-label">Elige KNX si…</div>
+            <div class="cmp-verdict-name">Proyecto de alta exigencia</div>
+            <ul class="cmp-verdict-list">
+              <li>Estás en obra nueva o reforma integral</li>
+              <li>El proyecto es un edificio de lujo, hotel u oficina</li>
+              <li>La fiabilidad a 30 años es no negociable</li>
+              <li>Tienes presupuesto de 15.000 €+ para domótica</li>
+              <li>Quieres valorizar el inmueble con sellos de calidad</li>
+            </ul>
+          </div>
+          <div class="cmp-verdict-card cmp-verdict-ha">
+            <div class="cmp-verdict-label">Elige HA + Zigbee si…</div>
+            <div class="cmp-verdict-name">Proyecto ágil y escalable</div>
+            <ul class="cmp-verdict-list">
+              <li>Vives en un piso ya construido (sin obra posible)</li>
+              <li>Buscas la mejor relación calidad/precio</li>
+              <li>Te gusta la tecnología y quieres control total</li>
+              <li>Quieres empezar pequeño y escalar poco a poco</li>
+              <li>Valoras la privacidad y el control local</li>
+              <li>Quieres integrarlo con IA, energía solar y más</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="domotica-cta">
+        <p class="domotica-cta-text">¿Te interesa una instalación en tu vivienda?</p>
+        <button class="main-button" onclick="document.getElementById('contactModal').style.display='block'">Contáctanos</button>
+      </div>
+    </div>
+
+    {{ partial "footer.html" . }}
+
+    <div id="contactModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form
+          action="https://formspree.io/f/mvoezepl"
+          method="POST"
+          id="contactForm"
+        >
+          <label for="name">Nombre:</label><br />
+          <input type="text" id="name" name="name" required /><br />
+          <label for="email">Email:</label><br />
+          <input type="email" id="email" name="email" required /><br />
+          <label for="message">Mensaje:</label><br />
+          <textarea id="message" name="message" required></textarea><br />
+          <input type="submit" value="Enviar" class="main-button" />
+        </form>
+      </div>
+    </div>
+
+    <script src="/js/index.js"></script>
+    <script src="/js/dragon-scales.js"></script>
+  </body>
+</html>
