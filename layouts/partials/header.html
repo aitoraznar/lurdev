@@ -12,9 +12,11 @@
       </picture>
     </a>
   </div>
-  {{ if .IsHome }}
   <nav class="site-nav">
-    <a href="/domotica">Domótica</a>
+    {{ if .IsHome }}
+      <a href="/domotica">Domótica</a>
+    {{ else }}
+      <a href="/">Inicio</a>
+    {{ end }}
   </nav>
-  {{ end }}
 </header>

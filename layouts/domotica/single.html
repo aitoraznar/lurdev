@@ -3,31 +3,189 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Domótica inteligente · Lurdev</title>
-    <meta name="description" content="Home Assistant + Zigbee. Privacidad total, sin obras, para viviendas ya construídas." />
+    <title>{{ .Title }}</title>
+    <meta name="description" content="{{ .Description }}" />
+    <meta name="keywords" content="domótica, Home Assistant, Zigbee, Bizkaia, País Vasco, automatización hogar, sin suscripciones" />
+    <link rel="canonical" href="{{ .Permalink }}" />
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <style>html { height: auto; overflow-y: auto; }</style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Instalación de Home Assistant con Zigbee",
+      "provider": {
+        "@type": "Organization",
+        "name": "Lurdev SL",
+        "url": "https://lurdev.com"
+      },
+      "description": "Instalación y configuración de Home Assistant con dispositivos Zigbee para automatización del hogar y negocios. Sin obras, sin cloud obligatorio.",
+      "serviceType": "Domótica",
+      "areaServed": {
+        "@type": "State",
+        "name": "País Vasco"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Pack Básico",
+          "price": "499",
+          "priceCurrency": "EUR",
+          "description": "Servidor Home Assistant + Zigbee, hasta 10 dispositivos, 5 automatizaciones"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pack Avanzado",
+          "price": "1200",
+          "priceCurrency": "EUR",
+          "description": "Climatización, energía solar, dashboard personalizado en tablet"
+        }
+      ]
+    }
+    </script>
     {{ partial "head-end.html" . }}
   </head>
   <body class="domotica-page">
 
-    <section class="domotica-hero">
-      <canvas id="dragonScalesCanvas"></canvas>
-      {{ partial "header.html" . }}
-      <div class="domotica-hero-content">
-        <h1 class="domotica-hero-title">Domótica inteligente<br>para tu hogar</h1>
-        <p class="domotica-hero-sub">Home Assistant &middot; Zigbee &middot; WiFi</p>
-        <p class="domotica-hero-desc">Para viviendas ya construídas. Sin obras. Sin dependencias de nube.<br>Tu hogar, bajo tu control total.</p>
-        <button id="contactBtn" class="main-button">Contáctanos</button>
-      </div>
-    </section>
+    {{ partial "header.html" . }}
 
     <div class="domotica-body">
 
+      <!-- HERO -->
+      <div class="domotica-section domotica-page-intro">
+        <h1 class="domotica-page-title">Domótica con Home Assistant<br>para tu hogar o negocio</h1>
+        <p class="domotica-page-desc">Sin suscripciones, sin depender de Amazon o Google.<br>Tu hogar, tus datos. Instalamos Home Assistant + Zigbee en viviendas ya construidas &mdash; sin obras.</p>
+        <div class="hero-ctas">
+          <button id="contactBtn" class="main-button">Solicitar presupuesto</button>
+          <a href="/comparativa-domotica" class="main-button--outline">Ver comparativa con KNX &rarr;</a>
+        </div>
+      </div>
+
+      <!-- PROPUESTA DE VALOR -->
+      <div class="domotica-section">
+        <div class="domotica-section-title">Por qué elegir Home Assistant + Zigbee</div>
+        <div class="valor-grid">
+          <div class="valor-card">
+            <span class="valor-icon">🏠</span>
+            <div class="valor-title">Sin cloud obligatorio</div>
+            <p class="valor-desc">Todo funciona en tu red local. Sin suscripciones, sin que Amazon o Google accedan a tus datos domésticos.</p>
+          </div>
+          <div class="valor-card">
+            <span class="valor-icon">🔌</span>
+            <div class="valor-title">+500 marcas compatibles</div>
+            <p class="valor-desc">Philips, IKEA, Sonoff, Aqara, Shelly… Usas lo que ya tienes y añades lo que quieras sin cambiar de plataforma.</p>
+          </div>
+          <div class="valor-card">
+            <span class="valor-icon">💻</span>
+            <div class="valor-title">Instalado por expertos en software</div>
+            <p class="valor-desc">No solo instalamos dispositivos. Programamos automatizaciones avanzadas e integraciones con IA local a medida.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAQUETES DE SERVICIO -->
+      <div class="domotica-section">
+        <div class="domotica-section-title">💼&nbsp; Servicios y paquetes</div>
+        <div class="paquetes-grid">
+
+          <div class="paquete-card">
+            <div class="paquete-name">Pack Básico</div>
+            <div class="paquete-price">desde 499 €</div>
+            <div class="paquete-price-note">Instalación en un día</div>
+            <p class="paquete-desc">Ideal para empezar con domótica inteligente en un piso o casa sin inversión elevada.</p>
+            <ul class="paquete-features">
+              <li>Servidor Home Assistant (Raspberry Pi 5 o mini PC)</li>
+              <li>Coordinador Zigbee</li>
+              <li>Hasta 10 dispositivos Zigbee instalados y configurados</li>
+              <li>5 automatizaciones básicas (luces, clima, presencia)</li>
+              <li>1 mes de soporte incluido</li>
+            </ul>
+            <button class="main-button" onclick="document.getElementById('contactModal').style.display='block'">Pedir presupuesto</button>
+          </div>
+
+          <div class="paquete-card paquete-card--featured">
+            <div class="paquete-name">Pack Avanzado</div>
+            <div class="paquete-price">desde 1.200 €</div>
+            <div class="paquete-price-note">1–2 días de instalación</div>
+            <p class="paquete-desc">Para el máximo potencial: energía solar, climatización inteligente y dashboard personalizado.</p>
+            <ul class="paquete-features">
+              <li>Todo lo del Pack Básico</li>
+              <li>Integración con calefacción / climatización</li>
+              <li>Monitorización de consumo energético</li>
+              <li>Dashboard personalizado en tablet</li>
+              <li>Integración con energía solar (si aplica)</li>
+              <li>3 meses de soporte incluido</li>
+            </ul>
+            <button class="main-button" onclick="document.getElementById('contactModal').style.display='block'">Pedir presupuesto</button>
+          </div>
+
+          <div class="paquete-card">
+            <div class="paquete-name">Pack Negocio</div>
+            <div class="paquete-price">A medida</div>
+            <div class="paquete-price-note">Presupuesto personalizado</div>
+            <p class="paquete-desc">Para bares, oficinas y locales comerciales. Control de iluminación, clima, acceso e informes de consumo.</p>
+            <ul class="paquete-features">
+              <li>Control de iluminación, clima y acceso</li>
+              <li>Informes de consumo energético</li>
+              <li>Mantenimiento remoto mensual incluido</li>
+              <li>Integración con sistemas existentes</li>
+              <li>Soporte prioritario</li>
+            </ul>
+            <button class="main-button" onclick="document.getElementById('contactModal').style.display='block'">Solicitar info</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- MANTENIMIENTO MENSUAL -->
+      <div class="domotica-section">
+        <div class="domotica-section-title">🔄&nbsp; Plan de mantenimiento mensual</div>
+        <div class="mant-card">
+          <div class="mant-card-price">
+            <span class="mant-price-value">39 €</span>
+            <span class="mant-price-period">/ mes</span>
+          </div>
+          <div class="mant-card-body">
+            <div class="mant-card-title">Tu sistema siempre actualizado y sin sorpresas</div>
+            <ul class="mant-features">
+              <li>Actualizaciones mensuales de Home Assistant</li>
+              <li>Revisión de automatizaciones</li>
+              <li>Soporte por incidencias (respuesta en 24 h)</li>
+              <li>Acceso remoto seguro vía VPN</li>
+              <li>Copia de seguridad automática</li>
+              <li>Incorporación de nuevos dispositivos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- POR QUÉ LURDEV -->
+      <div class="domotica-section">
+        <div class="domotica-section-title">⚡&nbsp; Por qué Lurdev</div>
+        <div class="lurdev-differentiators">
+          <div class="lurdev-diff-item">
+            <span class="lurdev-diff-icon">👨‍💻</span>
+            <div class="lurdev-diff-title">Somos desarrolladores, no solo instaladores</div>
+            <p class="lurdev-diff-desc">Programamos automatizaciones a medida que ningún instalador convencional puede hacer. Si lo imaginas, lo construimos.</p>
+          </div>
+          <div class="lurdev-diff-item">
+            <span class="lurdev-diff-icon">🤖</span>
+            <div class="lurdev-diff-title">Automatizaciones con IA local</div>
+            <p class="lurdev-diff-desc">Integramos LLMs locales (Ollama) y asistentes de voz que funcionan sin internet ni suscripciones externas.</p>
+          </div>
+          <div class="lurdev-diff-item">
+            <span class="lurdev-diff-icon">🔒</span>
+            <div class="lurdev-diff-title">100% local &mdash; tus datos no salen de tu red</div>
+            <p class="lurdev-diff-desc">Tu historial doméstico se almacena en tu propio servidor. Ninguna empresa accede a él ni lo monetiza.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTROL DE DATOS Y PRIVACIDAD -->
       <div class="domotica-section">
         <div class="domotica-section-title">🗄&nbsp; Control de datos y privacidad</div>
 
@@ -68,6 +226,7 @@
         </div>
       </div>
 
+      <!-- SEGURIDAD ACTIVA -->
       <div class="domotica-section">
         <div class="domotica-section-title">🔒&nbsp; Seguridad activa</div>
 
@@ -117,6 +276,7 @@
         </div>
       </div>
 
+      <!-- OTRAS VENTAJAS -->
       <div class="domotica-section">
         <div class="domotica-section-title">✨&nbsp; Otras ventajas del ecosistema</div>
 
@@ -148,6 +308,7 @@
         </div>
       </div>
 
+      <!-- EN RESUMEN -->
       <div class="domotica-section">
         <div class="domotica-section-title">En resumen — qué no hace nunca este sistema</div>
         <div class="domotica-summary">
@@ -170,6 +331,34 @@
         </div>
       </div>
 
+      <!-- FAQ -->
+      <div class="domotica-section">
+        <div class="domotica-section-title">❓&nbsp; Preguntas frecuentes</div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q">¿Necesito hacer obras en casa?</div>
+            <p class="faq-a">No. Home Assistant con Zigbee funciona sobre la instalación eléctrica existente. Los dispositivos Zigbee se instalan en minutos sobre enchufes, interruptores y luminarias actuales. Sin canaletas, sin cables nuevos.</p>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">¿Funciona sin internet?</div>
+            <p class="faq-a">Sí. El sistema es 100% local. Las automatizaciones, los sensores y el control desde la app funcionan aunque tu operador tenga una caída. No dependemos de ningún servidor externo.</p>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">¿Es compatible con Alexa, Google Home o Apple HomeKit?</div>
+            <p class="faq-a">Sí. Home Assistant se integra de forma nativa con Alexa, Google Home, Apple HomeKit y Matter. Puedes usar el asistente de voz que prefieras sin perder el control local.</p>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">¿Qué pasa si el servidor de Home Assistant falla?</div>
+            <p class="faq-a">Si el servidor se reinicia o tiene un problema, los dispositivos Zigbee básicos (interruptores, sensores) siguen operando. Restaurar el servidor y recuperar la configuración desde la copia de seguridad automática tarda minutos.</p>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">¿Cuánto tarda la instalación?</div>
+            <p class="faq-a">Un Pack Básico se instala en 4–8 horas en un mismo día. El Pack Avanzado puede requerir 1–2 días según la vivienda y los dispositivos a integrar.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ENLACE A COMPARATIVA -->
       <div class="domotica-section">
         <a href="/comparativa-domotica" class="domotica-card domotica-card--link">
           <div class="domotica-card-icon">⚖</div>
@@ -181,9 +370,11 @@
         </a>
       </div>
 
+      <!-- CTA FINAL -->
       <div class="domotica-cta">
-        <p class="domotica-cta-text">¿Te interesa una instalación en tu vivienda?</p>
+        <p class="domotica-cta-text">¿Te interesa una instalación en tu vivienda o negocio?</p>
         <button class="main-button" onclick="document.getElementById('contactModal').style.display='block'">Contáctanos</button>
+        <p class="domotica-zone-note">Servicio en Bizkaia y País Vasco &middot; Consulta disponibilidad en otras provincias</p>
       </div>
 
     </div>
@@ -210,6 +401,5 @@
     </div>
 
     <script src="/js/index.js"></script>
-    <script src="/js/dragon-scales.js"></script>
   </body>
 </html>

@@ -3,31 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KNX vs Home Assistant + Zigbee · Lurdev</title>
-    <meta name="description" content="Comparativa técnica y económica entre el estándar profesional KNX y el ecosistema open-source Home Assistant con dispositivos Zigbee." />
-    <meta name="keywords" content="domótica, Home Assistant, Zigbee, KNX, comparativa, domótica inteligente, smart home" />
+    <title>{{ .Title }}</title>
+    <meta name="description" content="{{ .Description }}" />
+    <meta name="keywords" content="KNX, Home Assistant, Zigbee, comparativa domótica, coste, instalación, privacidad, País Vasco" />
+    <link rel="canonical" href="{{ .Permalink }}" />
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <style>html { height: auto; overflow-y: auto; }</style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "KNX vs Home Assistant + Zigbee: Comparativa completa 2025",
+      "description": "Comparativa técnica y económica entre KNX y Home Assistant con Zigbee. Coste, instalación, privacidad y fiabilidad.",
+      "author": {
+        "@type": "Organization",
+        "name": "Lurdev SL",
+        "url": "https://lurdev.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Lurdev SL",
+        "url": "https://lurdev.com"
+      }
+    }
+    </script>
     {{ partial "head-end.html" . }}
   </head>
   <body class="domotica-page">
 
-    <section class="domotica-hero domotica-hero--short">
-      <canvas id="dragonScalesCanvas"></canvas>
-      {{ partial "header.html" . }}
-      <div class="domotica-hero-content">
-        <p class="domotica-hero-sub">Análisis técnico · Domótica residencial · 2025</p>
-        <h1 class="domotica-hero-title">KNX vs<br>Home Assistant + Zigbee</h1>
-        <p class="domotica-hero-desc">Comparativa técnica y económica entre el estándar profesional KNX y el ecosistema open-source con dispositivos Zigbee.</p>
-        <a href="/domotica" class="cmp-back-link">← Volver a Domótica</a>
-      </div>
-    </section>
+    {{ partial "header.html" . }}
 
     <div class="domotica-body">
+
+      <div class="domotica-section domotica-page-intro">
+        <p class="domotica-page-sub">Análisis técnico &middot; Domótica residencial &middot; 2025</p>
+        <h1 class="domotica-page-title">KNX vs<br>Home Assistant + Zigbee</h1>
+        <p class="domotica-page-desc">Comparativa técnica y económica entre el estándar profesional KNX y el ecosistema open-source con dispositivos Zigbee.</p>
+        <a href="/domotica" class="cmp-back-link">← Volver a Domótica</a>
+      </div>
+
       <div class="domotica-section domotica-comparison-section">
 
         <div class="cmp-headers">
@@ -306,8 +324,11 @@
       </div>
 
       <div class="domotica-cta">
-        <p class="domotica-cta-text">¿Te interesa una instalación en tu vivienda?</p>
-        <button class="main-button" onclick="document.getElementById('contactModal').style.display='block'">Contáctanos</button>
+        <p class="domotica-cta-text">¿Quieres instalar Home Assistant en tu vivienda o negocio?</p>
+        <button class="main-button" onclick="document.getElementById('contactModal').style.display='block'">Solicitar presupuesto</button>
+        <br>
+        <a href="/domotica" class="cta-services-link">Ver nuestros servicios y paquetes &rarr;</a>
+        <p class="domotica-zone-note">Servicio en Bizkaia y País Vasco &middot; Consulta disponibilidad en otras provincias</p>
       </div>
     </div>
 
@@ -333,6 +354,5 @@
     </div>
 
     <script src="/js/index.js"></script>
-    <script src="/js/dragon-scales.js"></script>
   </body>
 </html>

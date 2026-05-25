@@ -5,10 +5,13 @@
     }
   }
 
-  document.getElementById("contactBtn").onclick = function () {
-    trackAnalyticsEvent("open_contact", {});
-    document.getElementById("contactModal").style.display = "block";
-  };
+  const contactBtn = document.getElementById("contactBtn");
+  if (contactBtn) {
+    contactBtn.onclick = function () {
+      trackAnalyticsEvent("open_contact", {});
+      document.getElementById("contactModal").style.display = "block";
+    };
+  }
 
   document.getElementsByClassName("close")[0].onclick = function () {
     document.getElementById("contactModal").style.display = "none";

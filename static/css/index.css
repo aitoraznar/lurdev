@@ -226,60 +226,42 @@ body.domotica-page {
   display: block;
 }
 
-.domotica-hero {
+body.domotica-page header {
   position: relative;
-  overflow: hidden;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--main-color);
+  padding: 1.25rem 2rem;
 }
 
-.domotica-hero #dragonScalesCanvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-.domotica-hero header {
-  z-index: 2;
-}
-
-.domotica-hero-content {
+body.domotica-page .logo-brand {
   position: relative;
-  z-index: 2;
-  text-align: center;
-  color: white;
-  max-width: 600px;
-  padding: 0 2rem;
+  width: 140px;
 }
 
-.domotica-hero-title {
-  font-size: 2.5rem;
+.domotica-page-intro {
+  padding-bottom: 0.5rem;
+}
+
+.domotica-page-title {
+  font-size: 2rem;
   font-weight: 700;
   text-transform: uppercase;
-  margin: 0 0 1rem;
-  line-height: 1.2;
+  color: white;
+  line-height: 1.15;
+  margin: 0 0 0.75rem;
 }
 
-.domotica-hero-sub {
-  font-size: 1rem;
+.domotica-page-sub {
+  font-size: 0.8rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  opacity: 0.8;
-  margin: 0 0 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 0.75rem;
 }
 
-.domotica-hero-desc {
+.domotica-page-desc {
   font-size: 1rem;
   line-height: 1.6;
-  opacity: 0.9;
-  margin: 0 0 2rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 1.5rem;
 }
 
 .domotica-body {
@@ -623,8 +605,8 @@ body.domotica-page {
 }
 
 @media only screen and (max-width: 800px) {
-  .domotica-hero-title {
-    font-size: 1.8rem;
+  .domotica-page-title {
+    font-size: 1.6rem;
   }
   .domotica-body {
     padding: 3rem 1.25rem;
@@ -646,8 +628,8 @@ body.domotica-page {
 }
 
 @media only screen and (max-width: 600px) {
-  .domotica-hero-title {
-    font-size: 1.5rem;
+  .domotica-page-title {
+    font-size: 1.4rem;
   }
   .domotica-card {
     flex-direction: column;
@@ -666,4 +648,331 @@ body.domotica-page {
   .cmp-table .cmp-cat { display: none; }
   .cmp-table { font-size: 12px; }
   .cmp-table td { padding: 0.65rem 0.75rem; }
+}
+
+/* ─── Hero dual CTA ─── */
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.main-button--outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 4px;
+  padding: 16px 20px;
+  cursor: pointer;
+  font-size: 1em;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1;
+}
+
+.main-button--outline:hover {
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+/* ─── Propuesta de valor ─── */
+.valor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.valor-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+}
+
+.valor-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.valor-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.valor-desc {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─── Paquetes de servicio ─── */
+.paquetes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.paquete-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.paquete-card--featured {
+  border-color: rgba(240, 194, 68, 0.45);
+  background: rgba(240, 194, 68, 0.04);
+}
+
+.paquete-name {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.5rem;
+}
+
+.paquete-card--featured .paquete-name {
+  color: var(--secondary-color);
+}
+
+.paquete-price {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.2rem;
+}
+
+.paquete-price-note {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1rem;
+}
+
+.paquete-desc {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.paquete-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.paquete-features li {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  padding-left: 1.2rem;
+  position: relative;
+  line-height: 1.45;
+}
+
+.paquete-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #3fb950;
+  font-size: 11px;
+  top: 0;
+}
+
+/* ─── Mantenimiento mensual ─── */
+.mant-card {
+  background: rgba(77, 144, 254, 0.05);
+  border: 1px solid rgba(77, 144, 254, 0.2);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.mant-card-price {
+  text-align: center;
+  flex-shrink: 0;
+  min-width: 90px;
+}
+
+.mant-price-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: white;
+  display: block;
+}
+
+.mant-price-period {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.mant-card-body {
+  flex: 1;
+}
+
+.mant-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.75rem;
+}
+
+.mant-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+}
+
+.mant-features li {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.mant-features li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #7ab3ff;
+  font-size: 10px;
+  top: 2px;
+}
+
+/* ─── Por qué Lurdev ─── */
+.lurdev-differentiators {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.lurdev-diff-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.lurdev-diff-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.lurdev-diff-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.4rem;
+}
+
+.lurdev-diff-desc {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─── FAQ ─── */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.faq-q {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.4rem;
+}
+
+.faq-a {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ─── Zona de servicio ─── */
+.domotica-zone-note {
+  margin-top: 1rem;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+/* ─── CTA link inline ─── */
+.cta-services-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 13px;
+  color: var(--secondary-color);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+.cta-services-link:hover { opacity: 1; }
+
+@media only screen and (max-width: 800px) {
+  .paquetes-grid {
+    grid-template-columns: 1fr;
+  }
+  .valor-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .lurdev-differentiators {
+    grid-template-columns: 1fr;
+  }
+  .mant-card {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .mant-features {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .valor-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
