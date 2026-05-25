@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Domótica inteligente · Lurdev</title>
+    <meta name="description" content="Home Assistant + Zigbee. Privacidad total, sin obras, para viviendas ya construídas." />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <style>html { height: auto; overflow-y: auto; }</style>
+    {{ partial "head-end.html" . }}
+  </head>
+  <body class="domotica-page">
+
+    <section class="domotica-hero">
+      <canvas id="dragonScalesCanvas"></canvas>
+      {{ partial "header.html" . }}
+      <div class="domotica-hero-content">
+        <h1 class="domotica-hero-title">Domótica inteligente<br>para tu hogar</h1>
+        <p class="domotica-hero-sub">Home Assistant &middot; Zigbee &middot; WiFi</p>
+        <p class="domotica-hero-desc">Para viviendas ya construídas. Sin obras. Sin dependencias de nube.<br>Tu hogar, bajo tu control total.</p>
+        <button id="contactBtn" class="main-button">Contáctanos</button>
+      </div>
+    </section>
+
+    <div class="domotica-body">
+
+      <div class="domotica-section">
+        <div class="domotica-section-title">🗄&nbsp; Control de datos y privacidad</div>
+
+        <div class="domotica-card">
+          <div class="domotica-card-icon">🏠</div>
+          <div class="domotica-card-body">
+            <div class="domotica-card-title">Procesamiento 100% local</div>
+            <div class="domotica-card-desc">Toda la lógica, automatizaciones y datos de sensores se procesan en tu servidor local. Ningún paquete de datos abandona tu red doméstica sin que tú lo decidas explícitamente.</div>
+            <span class="domotica-tag">Sin cloud obligatorio</span>
+          </div>
+        </div>
+
+        <div class="domotica-card">
+          <div class="domotica-card-icon">🔌</div>
+          <div class="domotica-card-body">
+            <div class="domotica-card-title">Zigbee no habla con internet</div>
+            <div class="domotica-card-desc">Los dispositivos Zigbee se comunican exclusivamente con el coordinador local. A diferencia de los dispositivos WiFi con app de fabricante, un sensor Zigbee es incapaz de enviar datos a servidores externos por sí solo.</div>
+            <span class="domotica-tag">Aislamiento de red físico</span>
+          </div>
+        </div>
+
+        <div class="domotica-card">
+          <div class="domotica-card-icon">👁</div>
+          <div class="domotica-card-body">
+            <div class="domotica-card-title">Sin telemetría ni perfiles de usuario</div>
+            <div class="domotica-card-desc">Plataformas como Google Home o Amazon Alexa construyen perfiles de comportamiento con tus datos. Home Assistant no vende ni comparte ningún dato. El historial de tu hogar es solo tuyo.</div>
+            <span class="domotica-tag">Sin monetización de datos</span>
+          </div>
+        </div>
+
+        <div class="domotica-card">
+          <div class="domotica-card-icon">🗄</div>
+          <div class="domotica-card-body">
+            <div class="domotica-card-title">Base de datos propia y exportable</div>
+            <div class="domotica-card-desc">Home Assistant almacena todo el histórico en una base de datos en tu propio servidor. Puedes exportarla, consultarla, borrarla o migrarla en cualquier momento.</div>
+            <span class="domotica-tag">Control total del historial</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="domotica-section">
+        <div class="domotica-section-title">🔒&nbsp; Seguridad activa</div>
+
+        <div class="domotica-card">
+          <div class="domotica-card-icon">📶</div>
+          <div class="domotica-card-body">
+            <div class="domotica-card-title">Funciona sin internet (modo offline)</div>
+            <div class="domotica-card-desc">Al no depender de servidores externos, el sistema sigue operativo aunque el ISP tenga una caída. Tus luces, alarmas, persianas y cerraduras funcionan con la misma fiabilidad que si internet no existiera.</div>
+            <span class="domotica-tag">Resiliencia ante cortes</span>
+          </div>
+        </div>
+
+        <div class="domotica-card">
+          <div class="domotica-card-icon">🔑</div>
+          <div class="domotica-card-body">
+            <div class="domotica-card-title">Autenticación y acceso remoto seguro</div>
+            <div class="domotica-card-desc">El acceso remoto usa un túnel cifrado TLS sin necesidad de abrir puertos en el router. Alternativamente puedes configurar WireGuard o Tailscale para acceso VPN sin exponer ningún servicio a internet directamente.</div>
+            <span class="domotica-tag">VPN / túnel cifrado</span>
+          </div>
+        </div>
+
+        <div class="domotica-card">
+          <div class="domotica-card-icon">🔬</div>
+          <div class="domotica-card-body">
+            <div class="domotica-card-title">Código abierto y auditable</div>
+            <div class="domotica-card-desc">Todo el código de Home Assistant está publicado en GitHub. Cualquier persona puede auditar qué hace exactamente el software, qué datos maneja y si existen vulnerabilidades. Imposible con plataformas propietarias cerradas.</div>
+            <span class="domotica-tag">Open source verificable</span>
+          </div>
+        </div>
+
+        <div class="domotica-card">
+          <div class="domotica-card-icon">📡</div>
+          <div class="domotica-card-body">
+            <div class="domotica-card-title">Zigbee: protocolo con cifrado AES-128</div>
+            <div class="domotica-card-desc">La especificación Zigbee 3.0 incluye cifrado AES-128 en la capa de red y de aplicación. Las comunicaciones entre dispositivos y coordinador son cifradas por diseño, dificultando la intercepción del tráfico inalámbrico.</div>
+            <span class="domotica-tag">AES-128 en capa de red</span>
+          </div>
+        </div>
+
+        <div class="domotica-card">
+          <div class="domotica-card-icon">🔄</div>
+          <div class="domotica-card-body">
+            <div class="domotica-card-title">Actualizaciones de seguridad independientes</div>
+            <div class="domotica-card-desc">Home Assistant publica actualizaciones con cadencia mensual, sin depender de que un fabricante decida parchear su nube. Si un fabricante cierra o discontinúa un producto, tu instalación local sigue funcionando sin cambios.</div>
+            <span class="domotica-tag">Sin vendor lock-in</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="domotica-section">
+        <div class="domotica-section-title">✨&nbsp; Otras ventajas del ecosistema</div>
+
+        <div class="domotica-card">
+          <div class="domotica-card-icon">⚙️</div>
+          <div class="domotica-card-body">
+            <div class="domotica-card-title">Control granular de cada integración</div>
+            <div class="domotica-card-desc">Puedes activar o desactivar cualquier integración de forma individual, decidir qué datos se registran y establecer periodos de retención. Si no quieres guardar el historial de movimiento en el dormitorio, simplemente no lo configuras.</div>
+            <span class="domotica-tag">Configuración a medida</span>
+          </div>
+        </div>
+
+        <div class="domotica-card">
+          <div class="domotica-card-icon">👥</div>
+          <div class="domotica-card-body">
+            <div class="domotica-card-title">Gestión de usuarios y permisos</div>
+            <div class="domotica-card-desc">Sistema de usuarios con roles (administrador, usuario, solo lectura) y accesos diferenciados. Puedes crear cuentas para familiares o invitados con acceso restringido a determinadas áreas o dispositivos del hogar.</div>
+            <span class="domotica-tag">Control de acceso por roles</span>
+          </div>
+        </div>
+
+        <div class="domotica-card">
+          <div class="domotica-card-icon">🌐</div>
+          <div class="domotica-card-body">
+            <div class="domotica-card-title">Independencia de decisiones corporativas</div>
+            <div class="domotica-card-desc">Si Google decide cerrar Google Home o Amazon cambia las condiciones de Alexa, tu sistema no se ve afectado. Tu hogar no depende de que una empresa mantenga rentable su servicio cloud.</div>
+            <span class="domotica-tag">Sin riesgo de servicio discontinuado</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="domotica-section">
+        <div class="domotica-section-title">En resumen — qué no hace nunca este sistema</div>
+        <div class="domotica-summary">
+          <div class="domotica-summary-item">
+            <div class="domotica-summary-label">✕ Enviar datos a la nube</div>
+            <div class="domotica-summary-sub">Salvo integraciones de terceros que configures tú</div>
+          </div>
+          <div class="domotica-summary-item">
+            <div class="domotica-summary-label">✕ Construir un perfil tuyo</div>
+            <div class="domotica-summary-sub">Ninguna empresa accede a tus hábitos domésticos</div>
+          </div>
+          <div class="domotica-summary-item">
+            <div class="domotica-summary-label">✕ Dejar de funcionar sin internet</div>
+            <div class="domotica-summary-sub">100% operativo en modo offline</div>
+          </div>
+          <div class="domotica-summary-item">
+            <div class="domotica-summary-label">✕ Depender de un fabricante</div>
+            <div class="domotica-summary-sub">Compatible con +500 marcas Zigbee</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="domotica-section">
+        <a href="/comparativa-domotica" class="domotica-card domotica-card--link">
+          <div class="domotica-card-icon">⚖</div>
+          <div class="domotica-card-body">
+            <div class="domotica-card-title">KNX vs Home Assistant + Zigbee</div>
+            <div class="domotica-card-desc">¿Estás comparando opciones? Consulta la comparativa técnica y económica entre el estándar profesional KNX y el ecosistema open-source con Zigbee.</div>
+            <span class="domotica-tag">Ver comparativa completa →</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="domotica-cta">
+        <p class="domotica-cta-text">¿Te interesa una instalación en tu vivienda?</p>
+        <button class="main-button" onclick="document.getElementById('contactModal').style.display='block'">Contáctanos</button>
+      </div>
+
+    </div>
+
+    {{ partial "footer.html" . }}
+
+    <div id="contactModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form
+          action="https://formspree.io/f/mvoezepl"
+          method="POST"
+          id="contactForm"
+        >
+          <label for="name">Nombre:</label><br />
+          <input type="text" id="name" name="name" required /><br />
+          <label for="email">Email:</label><br />
+          <input type="email" id="email" name="email" required /><br />
+          <label for="message">Mensaje:</label><br />
+          <textarea id="message" name="message" required></textarea><br />
+          <input type="submit" value="Enviar" class="main-button" />
+        </form>
+      </div>
+    </div>
+
+    <script src="/js/index.js"></script>
+    <script src="/js/dragon-scales.js"></script>
+  </body>
+</html>
