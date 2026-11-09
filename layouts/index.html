@@ -16,7 +16,7 @@
     {{ partial "head-end.html" . }}
   </head>
   <body>
-    <canvas id="dragonScalesCanvas"></canvas>
+    <canvas id="bgCanvas"></canvas>
     {{ partial "header.html" . }}
 
     <div class="content">
@@ -62,7 +62,7 @@
       </div>
     </div>
     <script src="/js/index.js"></script>
-    <script src="/js/dragon-scales.js"></script>
+    <script type="module" src="/js/gold-dust.js"></script>
     <script type="text/javascript">
       window.onload = function(){
       (function(d, script) {
